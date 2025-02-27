@@ -28,7 +28,7 @@ const Login = ({ handleLogin }) => {
                 alert(isRegister ? "Registration successful!" : "Login successful!");
                 if (!isRegister) {
                     handleLogin(result.user.name);
-                    navigate("/blog/allBlogs");
+                    navigate("/");
                 } else {
                     setIsRegister(false);
                 }

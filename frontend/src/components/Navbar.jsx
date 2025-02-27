@@ -41,7 +41,7 @@ const Header = ({ isLoggedIn, userName, handleLogout }) => {
         >
             <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>THOUGHTLY</div>
             <nav style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-                <Link to="/blog/allBlogs" style={navLinkStyle}>
+                <Link to="#" style={navLinkStyle}>
                     Home
                 </Link>
                 {!isLoggedIn ? (
@@ -55,8 +55,8 @@ const Header = ({ isLoggedIn, userName, handleLogout }) => {
                             onMouseEnter={toggleDropdown}
                             onMouseLeave={toggleDropdown}
                         >
-                            <Link to="/blog/addBlog" style={navLinkStyle}>
-                                Add Blog
+                            <Link to="#" style={navLinkStyle}>
+                                ABCD
                             </Link>
                             {isDropdownVisible && (
                                 <div
@@ -73,11 +73,11 @@ const Header = ({ isLoggedIn, userName, handleLogout }) => {
                                         flexDirection: "column",
                                     }}
                                 >
-                                    <Link to="/blog/addBlog" style={{ ...navLinkStyle, padding: "0.5rem" }}>
-                                        Create Blog
+                                    <Link to="#" style={{ ...navLinkStyle, padding: "0.5rem" }}>
+                                        Something
                                     </Link>
-                                    <Link to="/blog/AI" style={{ ...navLinkStyle, padding: "0.5rem" }}>
-                                        Create with AI
+                                    <Link to="#" style={{ ...navLinkStyle, padding: "0.5rem" }}>
+                                        Something
                                     </Link>
                                 </div>
                             )}
