@@ -7,7 +7,7 @@ const childuserSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
-    Email:{
+    password:{
         type:String,
         required:true
     }
