@@ -1,68 +1,225 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* src/index.css */
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9; /* Light gray background */
+  color: #333333; /* Dark gray text */
+  line-height: 1.6;
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6c63ff; /* Soft purple */
+  text-decoration: none;
+}
+
+.navbar .logo:hover {
+  color: #4a43b3; /* Darker purple on hover */
+}
+
+.nav-buttons button {
+  margin-left: 1rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 25px; /* Rounded buttons */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.nav-buttons .play-now {
+  background-color: #6c63ff; /* Soft purple */
+  color: white;
+}
+
+.nav-buttons .play-now:hover {
+  background-color: #4a43b3; /* Darker purple on hover */
+}
+
+.nav-buttons .register {
+  background-color: #ff6584; /* Soft pink */
+  color: white;
+}
+
+.nav-buttons .register:hover {
+  background-color: #e64c6f; /* Darker pink on hover */
+}
+
+/* Hero Section Styles */
+.hero {
+  text-align: center;
+  padding: 6rem 2rem;
+  background-color: #ffffff; /* White background */
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #333333; /* Dark gray */
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #666666; /* Light gray */
+}
+
+.hero .cta-button {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  background-color: #6c63ff; /* Soft purple */
+  border: none;
+  border-radius: 25px; /* Rounded button */
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.hero .cta-button:hover {
+  background-color: #4a43b3; /* Darker purple on hover */
+}
+
+/* Features Section Styles */
+.features {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #f9f9f9; /* Light gray background */
+}
+
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333333; /* Dark gray */
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #ffffff; /* White background */
+  padding: 2rem;
+  border-radius: 10px;
+  width: 30%;
+  margin: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift card on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333333; /* Dark gray */
+}
+
+.card p {
+  font-size: 1rem;
+  color: #666666; /* Light gray */
+}
+
+/* Footer Styles */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.footer p {
+  margin: 0;
+  color: #666666; /* Light gray */
+}
+
+/* Login and Register Page Styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  background-color: #f9f9f9; /* Light gray background */
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333333; /* Dark gray */
+}
+
+.form-label {
+  font-weight: bold;
+  color: #333333; /* Dark gray */
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #dddddd; /* Light gray border */
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #6c63ff; /* Soft purple on focus */
+  outline: none;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #6c63ff; /* Soft purple */
+  border: none;
+  border-radius: 25px; /* Rounded button */
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #4a43b3; /* Darker purple on hover */
+}
+
+.text-center {
+  text-align: center;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: #6c63ff; /* Soft purple link */
+  text-decoration: none;
 }
+
 a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  text-decoration: underline;
 }
