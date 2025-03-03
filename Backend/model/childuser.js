@@ -7,14 +7,19 @@ const childuserSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
+
     password:{
         type:String,
         required:true
+    },
+    salt:{
+        type:String
     }
 });
 childuserSchema.pre('save',async function(next){
     if(this.isModified('Password')){
         const salt = await bcrypt.genSalt(11);
+        this.salt = salt;
         console.log(salt);
         this.salt = salt;
         this.Password = await bcrypt.hash(this.Password,salt);

@@ -16,11 +16,11 @@ router.post('/register', async (req, res) => {
     }
 
     // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
-    console.log('Hashed Password:', hashedPassword); // Debugging
+    // const hashedPassword = await bcrypt.hash(password, 10);
+    // console.log('Hashed Password:', hashedPassword); // Debugging
 
     // Create a new user
-    const newUser = new Child({ Name, email, password: hashedPassword });
+    const newUser = new Child({ Name, email, password: password });
     await newUser.save();
 
     res.status(201).json({ message: 'User registered successfully' });
@@ -39,7 +39,10 @@ router.post('/login', async (req, res) => {
     // Find user by email
     const user = await Child.findOne({ email });
     console.log('User from DB:', user); // Debugging
-
+    console.log('User Password', user.password); // Debugging
+    const pass = await bcrypt.hash(password,user.salt);
+    console.log(password);
+    console.log(pass);
     if (!user) {
       return res.status(400).json({ error: 'Invalid email or password' });
     }
