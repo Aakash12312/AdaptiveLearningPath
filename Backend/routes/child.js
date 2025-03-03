@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Child = require('../model/childuser');
+const Child = require('../models/childuser');
 
 router.get('/', (req, res) => {
     const {Name} =  req.query.Name;
