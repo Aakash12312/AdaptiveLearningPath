@@ -57,7 +57,7 @@ const Login = () => {
                         />
                     </div>
                     <button type="submit" className="btn btn-primary w-100 mb-3">
-                        Log In
+                        Sign In
                     </button>
                     <p className="text-center">
                         Don't have an account? <Link to="/register">Register here</Link>.
