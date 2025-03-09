@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import AfterLoginPage from "./pages/AfterLoginPage";
+import CameraFeed from "./components/CameraFeed";
+import ExpressionDisplay from "./components/ExpressionDisplay"; // ✅ Import added
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
@@ -31,6 +33,17 @@ const App = () => {
 
                     {/* Register Page */}
                     <Route path="/register" element={<Register />} />
+
+                    {/* Camera Feed Page with Expression Display */}
+                    <Route
+                        path="/camera"
+                        element={
+                            <>
+                                <CameraFeed />
+                                <ExpressionDisplay /> {/* ✅ Added here */}
+                            </>
+                        }
+                    />
 
                     {/* Login Page */}
                     <Route path="/login" element={<Login />} />
