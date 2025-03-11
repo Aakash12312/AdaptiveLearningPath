@@ -89,7 +89,7 @@ def generate_frames():
             frame = buffer.tobytes()
 
             yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 # Flask route to return live video feed
 @app.route('/video_feed')
