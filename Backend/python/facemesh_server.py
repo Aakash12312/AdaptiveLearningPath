@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 # Initialize MediaPipe Face Mesh
 mp_face_mesh = mp.solutions.face_mesh
-mp_drawing = mp.solutions.drawing_utils
 face_mesh = mp_face_mesh.FaceMesh(
     max_num_faces=1,
     refine_landmarks=True,
@@ -65,17 +64,9 @@ def generate_frames():
             results = face_mesh.process(image)
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-            expression = "Neutral"
+            expression = "No face detected"
             if results.multi_face_landmarks:
                 for face_landmarks in results.multi_face_landmarks:
-                    mp_drawing.draw_landmarks(
-                        image=image,
-                        landmark_list=face_landmarks,
-                        connections=mp_face_mesh.FACEMESH_TESSELATION,
-                        landmark_drawing_spec=None,
-                        connection_drawing_spec=mp_drawing.DrawingSpec(color=(0,255,0), thickness=1)
-                    )
-
                     # Detect facial expression
                     expression = detect_expression(face_landmarks.landmark)
 
