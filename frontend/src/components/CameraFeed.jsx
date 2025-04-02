@@ -7,6 +7,8 @@ const FaceExpressionDetector = () => {
     const [expression, setExpression] = useState("Detecting...");
 
     useEffect(() => {
+        let isProcessing = false; // Prevent multiple FaceMesh calls at the same time
+
         const setupCamera = async () => {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
             if (videoRef.current) {
@@ -28,14 +30,26 @@ const FaceExpressionDetector = () => {
 
             faceMesh.onResults((results) => {
                 detectExpression(results);
+                isProcessing = false; // Allow next frame to be processed
             });
 
+            const processFrame = async () => {
+                if (!videoRef.current || !videoRef.current.videoWidth || !videoRef.current.videoHeight) {
+                    requestAnimationFrame(processFrame);
+                    return;
+                }
+
+                if (!isProcessing) {
+                    isProcessing = true;
+                    await faceMesh.send({ image: videoRef.current });
+                }
+
+                requestAnimationFrame(processFrame);
+            };
+
             if (videoRef.current) {
-                videoRef.current.onloadeddata = async () => {
-                    while (videoRef.current) {
-                        await faceMesh.send({ image: videoRef.current });
-                        await new Promise((resolve) => setTimeout(resolve, 100));
-                    }
+                videoRef.current.onloadeddata = () => {
+                    requestAnimationFrame(processFrame);
                 };
             }
         };
@@ -51,6 +65,7 @@ const FaceExpressionDetector = () => {
     const detectExpression = (results) => {
         if (!results.multiFaceLandmarks || results.multiFaceLandmarks.length === 0) {
             setExpression("No Face Detected");
+            drawFaceMesh(null); // Clear the canvas when no face is detected
             return;
         }
 
@@ -79,7 +94,7 @@ const FaceExpressionDetector = () => {
 
         setExpression(detectedExpression);
 
-        // Draw on Canvas
+        // Update the canvas
         drawFaceMesh(results);
     };
 
@@ -95,18 +110,7 @@ const FaceExpressionDetector = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
 
-        if (!results.multiFaceLandmarks) return;
-
-        ctx.strokeStyle = "lime";
-        ctx.lineWidth = 1;
-
-        results.multiFaceLandmarks.forEach((landmarks) => {
-            for (let point of landmarks) {
-                ctx.beginPath();
-                ctx.arc(point.x * canvas.width, point.y * canvas.height, 1, 0, 2 * Math.PI);
-                ctx.stroke();
-            }
-        });
+        // No FaceMesh points will be drawn (invisible)
     };
 
     return (
