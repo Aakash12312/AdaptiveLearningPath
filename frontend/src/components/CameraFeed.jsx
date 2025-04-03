@@ -7,7 +7,7 @@ const FaceExpressionDetector = () => {
     const [expression, setExpression] = useState("Detecting..."); // State to store the detected expression
 
     useEffect(() => {
-        const loadModels = async () => {
+        const loadModels = async () => {    
             // Load Face-API models
             await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
             await faceapi.nets.faceExpressionNet.loadFromUri("/models");
